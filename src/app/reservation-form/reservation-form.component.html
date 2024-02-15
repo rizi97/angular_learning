@@ -1,0 +1,42 @@
+<app-home></app-home>
+
+<div class="container">
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="row g-3 w-50 mx-auto">
+        <div class="col-md-6">
+            <label for="patientName" class="form-label">Name</label>
+            <input formControlName="patientName" class="form-control">
+            <div *ngIf="myForm.get('patientName')?.touched && myForm.get('patientName')?.hasError('required')">
+                Name is required.
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label for="patientGender" class="form-label">Gender</label>
+            <input formControlName="patientGender" class="form-control">
+            <div *ngIf="myForm.get('patientGender')?.touched && myForm.get('patientGender')?.hasError('required')">
+                Gender is required.
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label for="patientEmail" class="form-label">Email</label>
+            <input formControlName="patientEmail" class="form-control">
+            <div *ngIf="myForm.get('patientEmail')?.touched && myForm.get('patientEmail')?.hasError('required')">
+                Email is required.
+            </div>
+            <div *ngIf="myForm.get('patientEmail')?.touched && myForm.get('patientEmail')?.hasError('email')">
+                Please enter a valid email address.
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="patientPassword" class="form-label">Password</label>
+            <input formControlName="patientPassword" type="password" class="form-control">
+            <div *ngIf="myForm.get('patientPassword')?.touched && myForm.get('patientPassword')?.hasError('required')">
+                Password is required.
+            </div>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Add</button>
+        </div>
+    </form>
+</div>
